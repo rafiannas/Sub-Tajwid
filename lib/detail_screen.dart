@@ -46,6 +46,7 @@ class DetailMobilePage extends StatelessWidget {
                                 color: Colors.white,
                               )),
                         ),
+                        LikeButton(like: tajwid.like)
                       ],
                     ),
                   )),
@@ -71,5 +72,52 @@ class DetailMobilePage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class LikeButton extends StatefulWidget {
+  final int like;
+
+  LikeButton({required this.like});
+
+  @override
+  _LikeButtonState createState() => _LikeButtonState();
+}
+
+class _LikeButtonState extends State<LikeButton> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _changeLike() {
+    setState(() {
+      if (isFavorite) {
+        isFavorite = !isFavorite;
+      } else {
+        isFavorite = !isFavorite;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30), color: Colors.blue),
+        child: Row(
+          children: [
+            IconButton(
+                onPressed: _changeLike,
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: Colors.white,
+                )),
+          ],
+        ));
   }
 }
